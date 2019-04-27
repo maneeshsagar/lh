@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+
+<h1>{{ name }}, Welcome to your dashboard</h1><br>
+<form class="" action="{% url 'account:find' name %}" method="post">
+  Enter Locality<input type="text" name="locality">
+  <input type="submit" name="" value="Search">
+</form>
+{% if n_list %}
+<table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Contact No</th>
+        <th>Booking link</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for q in n_list %}
+    <tr>
+      <td>{{ q.l_name }}</td>
+      <td>{{ q.l_con_no }}</td>
+      <td><a href="#">Check details</a></td>
+    </tr>
+      {% endfor %}
+    </tbody>
+    </table>
+{% else %}
+{% endif %}
+</body>
+</html>

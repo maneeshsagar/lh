@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script>
+ function validate_form()
+ {
+   var name=document.forms["RegForm"]["sname"];
+   var cn=document.forms["RegForm"]["pnum"];
+
+   var id_num=document.forms["RegForm"]["id_no"];
+   var pass1=document.forms["RegForm"]["pass1"];
+   var pass2=document.forms["RegForm"]["pass2"];
+
+  if(cn.value.length != 10)
+  {
+  alert("Please enter a valid 10 digit phone number.");
+  cn.focus();
+  return false;
+}
+  if(pass1.value != pass2.value)
+{
+  alert("Passwords entered do not match.");
+  pass2.focus();
+  return false;
+}
+return true;
+ }
+</script>
+ <style>
+
+ body{
+   background-color: #666666;
+ }
+ form {border: 3px solid #f1f1f1;}
+
+ input[type=text], input[type=password] {
+     width: 100%;
+     padding: 12px 20px;
+     margin: 8px 0;
+     display: inline-block;
+
+     box-sizing: border-box;
+     align-items:center;
+     border: 1px solid #d9d9d9;
+     float: right;
+
+   }
+   label{
+     width: 100%;
+     clear: left;
+     text-align: left;
+     padding-left: : 15px;
+     float: left;
+   }
+
+   .formEdit{
+
+
+     background: hsl(345, 0%, 95%);
+     width: 800px;
+   align-items: center;
+
+   }
+   button {
+       background-color: #009900;
+       color: white;
+       padding: 14px 20px;
+       margin: 8px 0;
+       border: none;
+       cursor: pointer;
+       width: 100%;
+       align-self: center;
+       border-radius: 5px;
+   }
+
+   button:hover {
+       opacity: 0.8;
+   }
+
+   .cancelbtn {
+       width: auto;
+       padding: 10px 18px;
+       background-color: #e60000;
+   }
+
+   .imgcontainer {
+       text-align: center;
+       margin: 24px 0 12px 0;
+   }
+
+   img.avatar {
+       width: 40%;
+       border-radius: 50%;
+   }
+
+   .container1 {
+       padding: 16px;
+   }
+
+   span.psw {
+       float: center;
+       padding-top: 16px;
+   }
+
+  h2{
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #666666;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+  }
+  h2 span{
+    padding: 0 10px;
+    background: hsl(345, 0%, 95%);
+  }
+
+   @media screen and (max-width: 300px) {
+       span.psw {
+          display: block;
+          float: none;
+       }
+
+   }
+ </style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><b>LabourHire</b></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/account/">Home</a></li>
+      <li class="active"><a href="#">Contact Us</a>
+
+      </li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Login as<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="/account/loginL">Labour</a></li>
+            <li><a href="/account/loginE">Employer</a></li>
+            <li><a href="#">Administrator</a></li>
+
+          </ul>
+        </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Up as<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+
+              <li><a href="/account/signupE">Employer</a></li>
+
+            </ul>
+          </li>
+    </ul>
+  </div>
+</nav>
+
+  <div align="center">
+    <br>
+
+
+    <form action="{% url 'account:detL' %}" class="formEdit" name="RegForm" onsubmit="return validate_form()" method="post">
+{% csrf_token %}
+      <div class="container1">
+        <br>
+        <h2><span>Sign Up Form for Labours</span></h2>
+        <br>
+    <div align="left">
+    <input type="text" placeholder="Enter Full Name" name="sname" required></div>
+
+
+    <div align="left">
+            <input type="text" placeholder="Enter Contact Number" name="pnum" required></div>
+
+    <div align="left">
+            <input type="text" placeholder="Enter nearest locality" name="addr" required></div>
+
+    <div align="left">
+                <input type="password" placeholder="Type a Password" name="pass1" required></div>
+
+    <div align="left">
+                    <input type="password" placeholder="Type Password Again" name="pass2" required></div>
+
+    <div align="left">    <div class="form-group">
+      <select class="form-control" id="uniqueID" required>
+        <option>Choose an ID</option>
+        <option>Aadhar Card Number</option>
+        <option>PAN Card Number</option>
+        <option>Driving License</option>
+        <option>Voting Card</option>
+      </select>
+    </div></div>
+
+
+    <div align="left"><input type="text" name="id_no" id="id_no"></div>
+    <br>
+    <br>
+  <center><label width="400px">      <input type="checkbox" checked="checked" name="remember" style="border-radius: 5px;"> I accept the <a href="#">Terms of Use</a> & <a href="#">Private Policy</a>
+  </label></center>
+<center>    <input type="submit" value="Sign Up"></center>
+
+<center> <button type="button" class="button" style="background-color: red">Cancel</button></center>
+
+      </div>
+
+        </form>
+        <br>
+  <center>      <label style="text-align: center;"><font color="white"> Already have an account? </font><a href="Login_Employer.html"><font color="#ffffff"><u>Login</u></font></a></label></center>
+      </div>
+      <br>
+      <br>
+      <br>
+  </body>
+  </html>

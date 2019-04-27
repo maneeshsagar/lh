@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+    width: 84.5%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    align-items:center;
+    border-radius: 15px;
+
+}
+body{
+  background-color: #8c8c8c;
+}
+
+
+.formEdit{
+  border-radius: 25px;
+  border-color: #000000;
+  background: #000000;
+  width: 500px;
+align-items: center;
+
+}
+button {
+    background-color: #00ff00;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    align-self: center;
+    border-radius: 5px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+.container1 {
+    padding: 16px;
+}
+
+span.psw {
+    float: center;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+       display: block;
+       float: none;
+    }
+
+}
+</style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><b>LabourHire</b></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/account/">Home</a></li>
+      <li class="active"><a href="#">Contact Us</a>
+
+      </li>
+
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Login as<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li><a href="/account/loginE">Employer</a></li>
+            <li><a href="#">Administrator</a></li>
+
+          </ul>
+        </li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign Up as<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <li><a href="/account/signupL">Labour</a></li>
+              <li><a href="/account/signupE">Employer</a></li>
+
+            </ul>
+          </li>
+    </ul>
+  </div>
+</nav>
+<div align="center">
+  <br>
+  <br>
+<h2>Login Form for Labours</h2>
+
+<form action="{% url 'account:dashL' %}" class="formEdit" method="post" autocomplete="off">
+
+
+  <div class="container1">
+<div align="left">   <label for="uname"><b><font color="white">Username</font></b></label>
+<input type="text" placeholder="Enter Username" name="uname" required></div>
+
+<div align="left">    <label for="psw"><b><font color="white">Password</font></b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required></div>
+
+<center>    <button type="submit" class="button">Login</button></center>
+    <label>
+      <br>
+<center>      <input type="checkbox" checked="checked" name="remember"><font color="white" style="border-radius: 5px;"> Remember me
+</font></label></center>
+  </div>
+
+  <div class="container1">
+   <button type="button" class="button" style="background-color: red">Cancel</button>
+<center>    <span class="psw"><a href="#"><font color="white">Forgot password?</font></a></span></center>
+  </div>
+</form>
+</div>
+</body>
+</html>
